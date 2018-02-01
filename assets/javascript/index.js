@@ -91,6 +91,7 @@ class ViewLayer {
       'date': document.getElementById('date'),
       'img': document.getElementById('avatar'),
     }
+    
     this.moreEventListener()
     this.showData(data)
     this.showAttendeesList(data)
@@ -98,16 +99,16 @@ class ViewLayer {
   moreEventListener(){
     this.elements.more.addEventListener("click", (e) => {
       e.preventDefault();
-      // code for task #3
-    });
+      element.document.classList.remove('.position-relative') 
+   });
   }
   showAttendeesList(data){
     for (var i in data.attendees) {
       let element = document.createElement('li');
       element.classList.add('list-group-item');
       let img = document.createElement('img')
-      img.src = data.attendees[key].image
-      element.innerHTML = data.attendees[key].name;
+      img.src = data.attendees[i].image;// cus we already defined ((i)) so key is undifined!
+      element.innerHTML = data.attendees[i].name;
       this.elements.aList.appendChild(element).appendChild(img);
     };
   }
@@ -116,5 +117,7 @@ class ViewLayer {
     this.elements.date.innerHTML = `<button class=\"btn\">${ data.meta.day }</button>${data.meta.month}`
     this.elements.img.src = data.organizer.img
   }
+
 }
+
 const instance_of_view = new ViewLayer();
